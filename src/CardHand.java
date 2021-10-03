@@ -1,36 +1,32 @@
-public class CardHand <E extends Comparable<E>>{
-    //Class of cards
-    protected static class Item <E extends Comparable<E>> implements Comparable <Item<E>> {
-        private String rank;
-        private String suit;
-        private E value;
-
-        public Item(String rank, String suit) {
-            this.rank = rank;
-            this.suit = suit;
-        }
-
-        private final static String[] Suit = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-
-        private final static String[] Rank = {"Hearts", "Club", "Spade", "Diamond"};
-
-        public static String[] getRank() {
-            return Rank;
-        }
-
-        public static String[] getSuit() {
-            return Suit;
-        }
-
-        public E getValue() {
-            return value;
-        }
-
-        @Override
-        public int compareTo(Item<E> other) {
-            return this.value.compareTo(other.getValue());
-        }
-    }
+public class CardHand {
+    private int totalInHand;
     public static final int Fingers = 4;
+    PositionalList<Card> cardsInHand = new LinkedPositionalList<Card>();
+    public boolean ifEmpty() {
+        return this.cardsInHand.isEmpty();
+    }
 
+    public void addCard(String rank, String suit){
+
+        Card card = new Card(rank,suit);
+        this.cardsInHand.addFirst(card);
+        this.totalInHand += 1;
+        //add a new card with rank r and suit s to the hand.
+    }
+    public void play(String s) {
+        //emove and return a card of suit s from the player’s hand; if there is
+        //no card of suit s, then remove and return an arbitrary card from the hand.
+    }
+    public int iterator(){
+        //return an iterator for all cards currently in the hand.
+        return this.totalInHand;
+    }
+    public int suitIterator(String suit){
+       return 1 ;
+    }
+    public int getTotalInHand() {
+        return 1 ;
+    }
 }
+
+
