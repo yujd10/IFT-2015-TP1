@@ -6,11 +6,11 @@ public class Card implements Comparable<Card>  {
     private int spadeSize;
     private int diamondSize;
 
-    public Card(String rank, String suit) {
-        if (ifInList(rank, Rank)&&(ifInList(suit, Suit))){
+    public Card(String suit, String rank) {
+        if ((ifInList(suit, Suit))&&ifInList(rank, Rank)){
             this.rank = rank;this.suit=suit;
         }
-        else{
+        else {
             throw new IllegalArgumentException( "Select a card existing" );
         }
      }
