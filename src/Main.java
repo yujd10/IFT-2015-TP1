@@ -15,9 +15,12 @@ public class Main {
         CardHand cards= new CardHand();
         // Card card1 = new Card("2", "Spade");
         cards.addCard("2","Club");
+        cards.addCard("3","Club");
+        cards.addCard("4","Club");
+        cards.addCard("5","Club");
         System.out.println(cards.ifEmpty());
         
-        System.out.println( "2".compareTo("A")>0);
+        cards.iterator();
         // System.out.println(ifInList("2", Suit)&&(ifInList("Spade",Rank)));
     // System.out.println(ifInList("1", Suit));
 
