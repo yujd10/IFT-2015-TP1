@@ -1,12 +1,17 @@
 public class CardHand {
     private static int totalInHand;
-    public static final int Fingers = 4;
+    public final int Fingers = 4;
+    public static int heartSize;
+    public static int clubSize;
+    public static int spadeSize;
+    public static int diamondSize;
     static PositionalList<Card> cardsInHand = new LinkedPositionalList<Card>();
     public boolean ifEmpty() {
         return this.cardsInHand.isEmpty();
     }
 
     public static void addCard(String rank, String suit){
+        //if (CardHand.getSuitSize(suit) == 0){}
 
         Card card = new Card(rank,suit);
         CardHand.cardsInHand.addFirst(card);
@@ -22,11 +27,39 @@ public class CardHand {
         return this.totalInHand;
     }
     public int suitIterator(String suit){
-        int iterator = Card.getSuitSize(suit);
+        int iterator = getSuitSize(suit);
        return iterator ;
     }
     public int getTotalInHand() {
         return 1 ;
+    }
+    public void setSuitSize(String s){
+        if (s == "Heart"){
+            this.heartSize += 1;
+        }
+        else if (s == "Club"){
+            this.clubSize += 1;
+        }
+        else if (s == "Spade"){
+            this.spadeSize += 1;
+        }
+        else{
+            this.diamondSize +=1;
+        }
+    }
+    public static int getSuitSize(String s){
+        if (s == "Heart"){
+            return CardHand.heartSize;
+        }
+        else if (s == "Club"){
+            return CardHand.clubSize;
+        }
+        else if (s == "Spade"){
+            return CardHand.spadeSize;
+        }
+        else{
+            return CardHand.diamondSize;
+        }
     }
 }
 

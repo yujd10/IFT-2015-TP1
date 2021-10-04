@@ -1,10 +1,7 @@
 public class Card implements Comparable<Card>  {
     private String rank;
     private String suit;
-    public static int heartSize;
-    public static int clubSize;
-    public static int spadeSize;
-    public static int diamondSize;
+
 
     public Card(String suit, String rank) {
         if ((ifInList(suit, Suit))&&ifInList(rank, Rank)){
@@ -41,34 +38,7 @@ public class Card implements Comparable<Card>  {
         this.suit = suit;
     }
 
-    public void setSuitSize(String s){
-        if (s == "Heart"){
-            this.heartSize += 1;
-        }
-        else if (s == "Club"){
-            this.clubSize += 1;
-        }
-        else if (s == "Spade"){
-            this.spadeSize += 1;
-        }
-        else{
-            this.diamondSize +=1;
-        }
-    }
-    public static int getSuitSize(String s){
-        if (s == "Heart"){
-            return Card.heartSize;
-        }
-        else if (s == "Club"){
-            return Card.clubSize;
-        }
-        else if (s == "Spade"){
-            return Card.spadeSize;
-        }
-        else{
-            return Card.diamondSize;
-        }
-    }
+
 
     @Override
     public int compareTo(Card o) {
