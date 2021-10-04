@@ -1,16 +1,23 @@
+
+
 public class Main {
+    // private final static String[] Suit = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+    // private final static String[] Rank = {"Heart", "Club", "Spade", "Diamond"};
+    // public static boolean ifInList(String val,String[] list){
+    //     for (int i=0 ;i<list.length;i++) {
+    //         if (val == list[i]) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    //}
     public static void main(String[] args) {
-        PositionalList<Integer> L1 = new LinkedPositionalList<>();
-        PositionalList<Integer> L2 = new LinkedPositionalList<>();
-        Position p,q,r,s;
-        p = L1.addLast( 1 );
-        q = L1.addLast( 2 );
-        r = L2.addLast( 3 );
-        s = L2.addLast( 4 );
-        System.out.println( "L1: " + L1 );
-        System.out.println( "L2: " + L2 );
-        L1.remove( r );
-        System.out.println( "L1: " + L1 );
-        System.out.println( "L2: " + L2 );
+        CardHand cards= new CardHand();
+        // Card card1 = new Card("2", "Spade");
+        CardHand.addCard("2","Club");
+        System.out.println(cards.ifEmpty());
+        // System.out.println(ifInList("2", Suit)&&(ifInList("Spade",Rank)));
+    // System.out.println(ifInList("1", Suit));
+
     }
 }
