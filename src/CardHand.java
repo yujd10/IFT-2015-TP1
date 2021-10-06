@@ -1,45 +1,63 @@
-import java.util.Iterator;
+import java.util.ArrayList;
 
 public class CardHand {
     private int totalInHand;
     public static final int Fingers = 4;
-    PositionalList<Card> cardsInHand = new LinkedPositionalList<Card>();
+    public ArrayList<Card> deck = new ArrayList<>();
+
+    PositionalList<Card> cardsInHand = new LinkedPositionalList<>();
     public boolean ifEmpty() {
         return this.cardsInHand.isEmpty();
     }
+    public int getTotalInHand() {return this.cardsInHand.size();}
 
-    public void addCard(String rank, String suit){
+    public  void createDeck(){
 
-        Card card = new Card(rank,suit);
-        this.cardsInHand.addFirst(card);
-        this.totalInHand += 1;
-        //add a new card with rank r and suit s to the hand.
+        for (int i = 0; i <Card.Suit.length ; i++){
+            for (int j = 0; j < Card.Rank.length ; j++){
+                deck.add(new Card(Card.Rank[j],Card.Suit[i]));
+                System.out.println(Card.Suit[i]+" of "+Card.Rank[j]);
+            }
+        }
+    }
+
+    public Card addCard(String r, String s) {
+        for (int i = 0; i < deck.size(); i++) {
+            if (deck.get(i).getRank() == r && deck.get(i).getSuit() == s) {
+                this.cardsInHand.addFirst(deck.get(i));
+                return deck.get(i);
+                deck.remove(deck.get(i));
+
+            } else {
+                System.out.println("card already used");
+            }
+        }
     }
 
     public void play(String s) {
         //emove and return a card of suit s from the player’s hand; if there is
         //no card of suit s, then remove and return an arbitrary card from the hand.
+
     }
     public void iterator(){
-        int i=0;
-        Iterator<Card> it = this.cardsInHand.iterator();
-        //return an iterator for all cards currently in the hand.
-        while(it.hasNext())
-        if(i<=100) {
-            {
-                i += 1;
-                System.out.println(i);
-            }
-//        return this.totalInHand;
-        }
-        System.out.println("fini");
+//        int i=0;
+//        Iterator<Card> it = this.cardsInHand.iterator();
+//        //return an iterator for all cards currently in the hand.
+//        while(it.hasNext())
+//        if(i<=100) {
+//            {
+//                i += 1;
+//                System.out.println(i);
+//            }
+////        return this.totalInHand;
+//        }
+//        System.out.println("fini");
     }
     public int suitIterator(String suit){
        return 1 ;
     }
-    public int getTotalInHand() {
-        return 1 ;
-    }
+
+//    public void removeCard(String r,String s)
 }
 
 
