@@ -1,9 +1,12 @@
 public class Card implements Comparable<Card>  {
     private int rank;
-    private String suit;
+    private String[] suit;
 
 
     public Card(String suit, int rank) {
+        String[] s = suit.split("");
+        this.rank = rank;
+        this.suit = s;
         /*if ((ifInList(suit, Suit))&&ifInList(rank, Rank)){
             this.rank = rank;this.suit=suit;
         }
@@ -12,9 +15,9 @@ public class Card implements Comparable<Card>  {
         }*/
      }
 
-    private final static String[] Suit = {"Heart", "Club", "Spade", "Diamond"};
-    private final static int[] Rank = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
+    private static String[] Suit = {"Heart", "Club", "Spade", "Diamond"};
+    private static int[] Rank = {1,2,3,4,5,6,7,8,9,10,11,12,13};
 
     public boolean ifInList(String val, String[] list){
         for (int i=0 ;i<list.length;i++) {
@@ -26,7 +29,7 @@ public class Card implements Comparable<Card>  {
     }
 
 
-    public static int[] getRank() {
+    public int[] getRank() {
         return Rank;
     }
     public static String[] getSuit() { return Suit; }
@@ -34,10 +37,8 @@ public class Card implements Comparable<Card>  {
     public void setRank(int rank) {
         this.rank = rank;
     }
-    public void setSuit(String suit) {
-        this.suit = suit;
-    }
-
+    public void setSuit(String[] suit) {
+        this.suit = suit;}
 
 
     @Override
