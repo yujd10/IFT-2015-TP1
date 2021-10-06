@@ -1,19 +1,48 @@
 public class CardHand {
     private static int totalInHand;
-    public final int Fingers = 4;
+
     public static int heartSize;
     public static int clubSize;
     public static int spadeSize;
     public static int diamondSize;
-    static PositionalList<Card> cardsInHand = new LinkedPositionalList<Card>();
+    PositionalList<Card> cardHand;
+
+    Position<Card> fingerOne;
+    Position<Card> fingerTwo;
+    Position<Card> fingerThree;
+    Position<Card> fingerFour;
+
+    public CardHand() {cardHand = new LinkedPositionalList<Card>();
+        //First fingers in order in the hand
+        cardHand.addFirst(new Card(null, 0));
+        fingerOne = cardHand.first();
+        cardHand.addLast(new Card(null, 0));
+        fingerTwo = cardHand.last();
+        cardHand.addLast(new Card(null, 0));
+        fingerThree = cardHand.last();
+        cardHand.addLast(new Card(null, 0));
+        fingerFour = cardHand.last();
+
+    }
+
+
+    public boolean isEmpty(){
+        if (cardHand.size() == 4){
+            return true;}
+        else{
+            return false;
+        }
+
+    }
+    /*static PositionalList<Card> cardsInHand = new LinkedPositionalList<Card>();
     public boolean ifEmpty() {
         return this.cardsInHand.isEmpty();
     }
 
-    public static void addCard(String rank, String suit){
+    public static void addCard(int rank, String suit){
         //if (CardHand.getSuitSize(suit) == 0){}
 
-        Card card = new Card(rank,suit);
+        Card card = new Card(suit, rank);
         CardHand.cardsInHand.addFirst(card);
         CardHand.totalInHand += 1;
         //add a new card with rank r and suit s to the hand.
@@ -60,7 +89,7 @@ public class CardHand {
         else{
             return CardHand.diamondSize;
         }
-    }
+    }*/
 }
 
 

@@ -14,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
         CardHand cards= new CardHand();
         // Card card1 = new Card("2", "Spade");
-        CardHand.addCard("2","Club");
-        System.out.println(cards.ifEmpty());
+        // CardHand.addCard(2,"Club");
+        // System.out.println(cards.ifEmpty());
         // System.out.println(ifInList("2", Suit)&&(ifInList("Spade",Rank)));
     // System.out.println(ifInList("1", Suit));
 
