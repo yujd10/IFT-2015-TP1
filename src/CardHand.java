@@ -1,5 +1,3 @@
-import java.sql.SQLOutput;
-
 public class CardHand {
     private static int totalInHand;
 
@@ -9,22 +7,22 @@ public class CardHand {
     public static int diamondSize;
     PositionalList<Card> cardHand;
 
-    Position<Card> fingerOne;
-    Position<Card> fingerTwo;
-    Position<Card> fingerThree;
-    Position<Card> fingerFour;
+    Position<Card> fingerHeart;
+    Position<Card> fingerClubs;
+    Position<Card> fingerSpades;
+    Position<Card> fingerDiamond;
 
     public CardHand() {
         cardHand = new LinkedPositionalList<Card>();
         //First fingers in order in the hand
         cardHand.addFirst(new Card(null, 0));
-        fingerOne = cardHand.first();
+        fingerHeart = cardHand.first();
         cardHand.addLast(new Card(null, 0));
-        fingerTwo = cardHand.last();
+        fingerClubs = cardHand.last();
         cardHand.addLast(new Card(null, 0));
-        fingerThree = cardHand.last();
+        fingerSpades = cardHand.last();
         cardHand.addLast(new Card(null, 0));
-        fingerFour = cardHand.last();
+        fingerDiamond = cardHand.last();
 
     }
     public void addCard(int rank, String suit) {
@@ -53,37 +51,52 @@ public class CardHand {
     }
     //Iterates to the next finger
     public Position<Card> getNextFinger(Position<Card> finger){
-        if (fingerOne.equals(finger)){return fingerOne;}
-        else if (fingerTwo.equals(finger)){return fingerTwo;}
-        else if (fingerThree.equals(finger)){return fingerThree;}
-        else {return fingerFour;}
+        if (fingerHeart.equals(finger)){return fingerClubs;}
+        else if (fingerClubs.equals(finger)){return fingerSpades;}
+        else if (fingerSpades.equals(finger)){return fingerDiamond;}
+        else {return fingerHeart;}
     }
     //find the finger for a specific suit
     public Position<Card> suitLocation(String s){
         if (s == Card.getSuit()[0]){
-            return fingerOne;
+            return fingerHeart;
         }
         else if (s == Card.getSuit()[1]){
-            return fingerTwo;
+            return fingerClubs;
         }
         else if (s == Card.getSuit()[2]){
-            return fingerThree;
+            return fingerSpades;
         }
         else {
-            return fingerFour;
+            return fingerDiamond;
         }
     }
     public void play(String s) {
         Position<Card> finger = suitLocation(s);
-        if (isEmpty()){
+        if (cardHand.isEmpty()){
             System.out.println("You have no cards.");
         }
         else if(isFingerEmpty(finger)){
-            System.out.println("No Card from this suit on hand.");
+            Position<Card> nextFinger = getNextFinger(finger);
         }
 
     }
+    public Position<Card> checkNextFinger(Position<Card> finger){
 
+        if(isFingerEmpty(finger)){
+            Position<Card> nextFinger = getNextFinger(finger);
+            checkNextFinger(nextFinger);
+        }
+        else{
+            return finger;
+        }
+        return finger;
+    }
+
+
+    /*public Position<Card> cardToPlay(String s, Position<Card> finger){
+        Card card = cardHand.after(finger).getElement().getRank();
+    }*/
 
     /*static PositionalList<Card> cardsInHand = new LinkedPositionalList<Card>();
     public boolean ifEmpty() {
