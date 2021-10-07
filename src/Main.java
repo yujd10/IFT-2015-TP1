@@ -18,17 +18,26 @@ public class Main {
         cards.addCard("2","Diamond");
         cards.addCard("8","Heart");
 
-
-        
-        for(Card card:cards.cardsInHand){
-            if (card.getRank() !=  " "){
-                System.out.println(card.getRank()+" of " + card.getSuit());}
+//        Position<Card> p1 = cards.findPosition(c1);
+//        System.out.println(p1);
+//        //System.out.println(cards.cardsInHand.after(p1).getElement().getRank());
+        Iterator<Card> it = cards.suitIterator("Heart");
+        while(it.hasNext()){
+            Card card = it.next();
+            System.out.println(card.getRank()+" of "+card.getSuit());
         }
-
+//        System.out.println(c1.getRank());
+//        for(Card card:cards.cardsInHand){
+//            if (card.getRank() !=  " "){
+//                System.out.println(card.getRank()+" of " + card.getSuit());}
+//        }
+//
+//        cards.iterator();
 
 
 //
 //        Card cardPlayed = cards.Play("Heart");
 //        System.out.println(cardPlayed.getRank()+" of "+cardPlayed.getSuit());
 //    }
-}}
+}
+}
