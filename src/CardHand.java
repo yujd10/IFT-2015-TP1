@@ -27,7 +27,11 @@ public class CardHand {
             }
         }
     }
-
+//    public void removeCard(String r,String s){
+//        Position<Card> p = this.
+//            }
+//        }
+//    }
     public void addCard(String r, String s) {
         for (int i = 0; i < deck.size(); i++) {
             if (deck.get(i).getRank() == r && deck.get(i).getSuit() == s) {
@@ -80,7 +84,6 @@ public class CardHand {
                 if(i == item){
                     cardPlayed.setRank(card.getRank());
                     cardPlayed.setSuit(card.getSuit());
-
                 }i++;
             }
         }else {
@@ -114,42 +117,8 @@ public class CardHand {
         }
         return value;
     }
-//    Card Result;
-//    public Card randomCard(Position<Card> finger,String s){
-//
-//        if(this.cardsInHand.after(finger).getElement().getRank() != null){
-//            int i =0;
-//            for (Card card:this.cardsInHand){
-//                if(i == new Random().nextInt(getTotalInHand())&&card.getSuit()==s){
-//                    i++;
-//                    Result = card;
-//                }
-//            }
-//        }else{
-//            int i =0;
-//            for (Card card:this.cardsInHand){
-//                if(i == new Random().nextInt(getTotalInHand())&&card.getRank()!=null){
-//                    ++i;
-//                    Result=card;
-//                }
-//            }
-//        }
-//        return Result;
-//    }
 
-//    public Card play(String s) {
-//        switch (s){
-//            case "Heart":
-//                randomCard(fingerHeart,s);
-//                break;
-//            case "Club":
-//                randomCard(fingerClub,s);
-//            case "Spade":
-//                randomCard(fingerSpade,s);
-//            case "Diamond":
-//                randomCard(fingerDiamond,s);
-//        }
-//    }
+
     public void iterator(){
 //        int i=0;
 //        Iterator<Card> it = this.cardsInHand.iterator();

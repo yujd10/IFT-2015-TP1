@@ -19,12 +19,15 @@ public class Main {
         cards.addCard("8","Heart");
 
 
-
+        
         for(Card card:cards.cardsInHand){
             if (card.getRank() !=  " "){
-            System.out.println(card.getRank()+" of " + card.getSuit());}
+                System.out.println(card.getRank()+" of " + card.getSuit());}
         }
 
+
+
+//
 //        Card cardPlayed = cards.Play("Heart");
 //        System.out.println(cardPlayed.getRank()+" of "+cardPlayed.getSuit());
 //    }
