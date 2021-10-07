@@ -32,7 +32,7 @@ public class CardHand {
 //            }
 //        }
 //    }
-    
+
     public Card addCard(String r, String s) {
         Card cardAdded=new Card(null,null);
         for (int i = 0; i < deck.size(); i++) {
