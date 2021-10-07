@@ -3,26 +3,12 @@ public class Card implements Comparable<Card>  {
     private String suit;
 
     public Card(String rank, String suit) {
-        if ((ifInList(rank, Rank))&&ifInList(suit, Suit)){
+        //if ((ifInList(rank, Rank))&&ifInList(suit, Suit)){
             this.rank = rank;this.suit=suit;
-
-        }
-        else {
-            throw new IllegalArgumentException( "this Poker card already exists or its not a Poker card" );
-        }
      }
 
     public final static String[] Rank = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
     public final static String[] Suit = {"Heart", "Club", "Spade", "Diamond"}; //Spade > Heart > Diamond > Club
-    public boolean ifInList(String val,String[] list){
-        for (int i=0 ;i<list.length;i++) {
-            if (val == list[i]) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
     public String getRank() {
         return rank;
@@ -35,11 +21,15 @@ public class Card implements Comparable<Card>  {
     public void setRank(String rank) { this.rank = rank; }
     public void setSuit(String suit) { this.suit = suit; }
 
-
-
     @Override
     public int compareTo(Card o) {
-        return 0;
+        if(this.rank.compareTo(o.getRank())>0){
+            return 1;
+        }else if(this.rank.compareTo(o.getRank())==0){
+            return 0;
+        }else {
+            return -1;
+        }
     }
 }
 //    public void setSuitSize(String s){
@@ -69,4 +59,12 @@ public class Card implements Comparable<Card>  {
 //        else{
 //            return this.diamondSize;
 //        }
+//    }
+//public boolean ifInList(String val,String[] list){
+//        for (int i=0 ;i<list.length;i++) {
+//            if (val == list[i]) {
+//                return true;
+//            }
+//        }
+//        return false;
 //    }
