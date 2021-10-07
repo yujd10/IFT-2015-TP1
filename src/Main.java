@@ -6,32 +6,26 @@ public class Main {
     public static void main(String[] args) {
         CardHand cards= new CardHand();
         cards.createDeck();
-//        //System.out.println(cards.deck.size());
-        cards.addCard("2","Club");
-//        //System.out.println(cards.deck.size()+" and "+ cards.getTotalInHand());
-        cards.addCard("3","Club");
-        //System.out.println(cards.deck.size()+" and "+ cards.getTotalInHand());
+ //       System.out.println(cards.fingerHeart == null);
+        cards.addCard("2","Heart");
+        cards.addCard("J","Spade");
+        cards.addCard("3","Heart");
+        cards.addCard("A","Diamond");
         cards.addCard("4","Heart");
-        //System.out.println(cards.deck.size()+" and "+ cards.getTotalInHand());
-        cards.addCard("6","Spade");
+        cards.addCard("2","Club");
+        cards.addCard("5","Heart");
         cards.addCard("A","Club");
-        cards.addCard("J","Diamond");
-        cards.addCard("1","Heart");
-        cards.addCard("6","Diamond");
-        cards.addCard("8","Spade");
-        //System.out.println(cards.deck.size()+" and "+ cards.getTotalInHand());
-//        for(Card card:cards.cardsInHand){
-//            if (card.getRank() != null){
-//            System.out.println(card.getRank()+" of " + card.getSuit());}
-//        }
-//        System.out.println(cards.randomCard(cards.fingerClub, "Club"));
-//        System.out.println(cards.cardsInHand.after(cards.fingerDiamond).getClass());
+        cards.addCard("2","Diamond");
+        cards.addCard("8","Heart");
 
-        for (Card card:cards.cardsInHand){
-            if(){
-                System.out.println(card.getRank()+" of " + card.getSuit());
-            }
+
+
+        for(Card card:cards.cardsInHand){
+            if (card.getRank() !=  " "){
+            System.out.println(card.getRank()+" of " + card.getSuit());}
         }
-//        System.out.println(new Random().nextInt(cards.getTotalInHand()-4));
-    }
-}
+
+//        Card cardPlayed = cards.Play("Heart");
+//        System.out.println(cardPlayed.getRank()+" of "+cardPlayed.getSuit());
+//    }
+}}

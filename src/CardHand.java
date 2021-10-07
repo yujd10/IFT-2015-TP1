@@ -13,14 +13,7 @@ public class CardHand {
     public CardHand() {
         cardsInHand = new LinkedPositionalList<>();
         deck = new ArrayList<>();
-        cardsInHand.addFirst(new Card(null, null));
-        fingerHeart = cardsInHand.first();
-        cardsInHand.addLast(new Card(null, null));
-        fingerClub = cardsInHand.last();
-        cardsInHand.addLast(new Card(null, null));
-        fingerSpade = cardsInHand.last();
-        cardsInHand.addLast(new Card(null, null));
-        fingerDiamond = cardsInHand.last();
+
     }
 
     public boolean ifEmpty() { return this.cardsInHand.isEmpty(); }
@@ -38,31 +31,89 @@ public class CardHand {
     public void addCard(String r, String s) {
         for (int i = 0; i < deck.size(); i++) {
             if (deck.get(i).getRank() == r && deck.get(i).getSuit() == s) {
-                if(deck.get(i).getSuit() == "Heart") {
-                    this.cardsInHand.addAfter(fingerHeart,deck.get(i));
-                    deck.remove(deck.get(i));
-
-                    //System.out.println("Created");
-                }else if (deck.get(i).getSuit() == "Club"){
-                    this.cardsInHand.addAfter(fingerClub,deck.get(i));
-                    deck.remove(deck.get(i));
-
-                    //System.out.println("Created");
-                }else if (deck.get(i).getSuit() == "Spade"){
-                    this.cardsInHand.addAfter(fingerSpade,deck.get(i));
-                    deck.remove(deck.get(i));
-
-                    //System.out.println("Created");
-                }else{
-                    this.cardsInHand.addAfter(fingerDiamond,deck.get(i));
-                    deck.remove(deck.get(i));
-
-                    //System.out.println("Created");
+                if (deck.get(i).getSuit() == "Heart") {
+                    if (fingerHeart == null) {
+                        cardsInHand.addLast(deck.get(i));
+                        fingerHeart = cardsInHand.last();
+                        deck.remove(i);
+                    } else {
+                        cardsInHand.addBefore(fingerHeart, deck.get(i));
+                        deck.remove(i);
+                    }
+                } else if (deck.get(i).getSuit() == "Club") {
+                    if (fingerClub == null) {
+                        cardsInHand.addLast(deck.get(i));
+                        fingerClub = cardsInHand.last();
+                        deck.remove(i);
+                    } else {
+                        cardsInHand.addBefore(fingerClub, deck.get(i));
+                        deck.remove(i);
+                    }
+                } else if (deck.get(i).getSuit() == "Spade") {
+                    if (fingerSpade == null) {
+                        cardsInHand.addLast(deck.get(i));
+                        fingerSpade = cardsInHand.last();
+                        deck.remove(i);
+                    } else {
+                        cardsInHand.addBefore(fingerSpade, deck.get(i));
+                        deck.remove(i);
+                    }
+                } else {
+                    if (fingerDiamond == null) {
+                        cardsInHand.addLast(deck.get(i));
+                        fingerDiamond = cardsInHand.last();
+                        deck.remove(i);
+                    } else {
+                        cardsInHand.addBefore(fingerDiamond, deck.get(i));
+                        deck.remove(i);
+                    }
                 }
             }
         }
     }
 
+    public void randomCard(Position <Card> finger,Card cardPlayed){
+        if(ifFingerEmpty(finger)){
+            int i = 0;
+            int item = new Random().nextInt(this.cardsInHand.size());
+            for (Card card : cardsInHand){
+                if(i == item){
+                    cardPlayed.setRank(card.getRank());
+                    cardPlayed.setSuit(card.getSuit());
+
+                }i++;
+            }
+        }else {
+            cardPlayed.setSuit(cardsInHand.before(finger).getElement().getSuit());
+            cardPlayed.setRank(cardsInHand.before(finger).getElement().getRank());
+        }
+    }
+
+    public Card Play(String s){
+           Card cardPlayed=new Card(null,null);
+            switch (s){
+                case "Heart":
+                    randomCard(fingerHeart,cardPlayed);
+                    break;
+                case "Club":
+                    randomCard(fingerClub,cardPlayed);
+                    break;
+                case "Spade":
+                    randomCard(fingerSpade,cardPlayed);
+                    break;
+                case "Diamond":
+                    randomCard(fingerDiamond,cardPlayed);
+                    break;
+            }
+           return cardPlayed;
+    }
+    public boolean ifFingerEmpty(Position<Card> finger){
+        boolean value=false;
+        if(finger==null){
+            value = true;
+        }
+        return value;
+    }
 //    Card Result;
 //    public Card randomCard(Position<Card> finger,String s){
 //
@@ -117,7 +168,15 @@ public class CardHand {
        return 1 ;
     }
 
-//    public void removeCard(String r,String s)
 }
 
+//    public void subAddCard(Position<Card> finger,Card card){
+//        if (finger == null) {
+//            cardsInHand.addLast(card);
+//            finger = cardsInHand.last();
+//
+//        } else {
+//            cardsInHand.addBefore(finger, card);
+//        }
+//    }
 
