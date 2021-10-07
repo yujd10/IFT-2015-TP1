@@ -35,6 +35,13 @@ public class Card implements Comparable<Card>  {
     public void setRank(String rank) { this.rank = rank; }
     public void setSuit(String suit) { this.suit = suit; }
 
+
+
+    @Override
+    public int compareTo(Card o) {
+        return 0;
+    }
+}
 //    public void setSuitSize(String s){
 //        if (s == "Heart"){
 //            this.heartSize += 1;
@@ -63,9 +70,3 @@ public class Card implements Comparable<Card>  {
 //            return this.diamondSize;
 //        }
 //    }
-
-    @Override
-    public int compareTo(Card o) {
-        return 0;
-    }
-}

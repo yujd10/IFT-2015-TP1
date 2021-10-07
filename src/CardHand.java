@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class CardHand {
     private int totalInHand;
-    public static final int Fingers = 4;
     public ArrayList<Card> deck = new ArrayList<>();
+    
 
     PositionalList<Card> cardsInHand = new LinkedPositionalList<>();
     public boolean ifEmpty() {
@@ -16,20 +16,16 @@ public class CardHand {
         for (int i = 0; i <Card.Suit.length ; i++){
             for (int j = 0; j < Card.Rank.length ; j++){
                 deck.add(new Card(Card.Rank[j],Card.Suit[i]));
-                System.out.println(Card.Suit[i]+" of "+Card.Rank[j]);
             }
         }
     }
 
-    public Card addCard(String r, String s) {
+    public void addCard(String r, String s) {
         for (int i = 0; i < deck.size(); i++) {
             if (deck.get(i).getRank() == r && deck.get(i).getSuit() == s) {
                 this.cardsInHand.addFirst(deck.get(i));
-                return deck.get(i);
                 deck.remove(deck.get(i));
-
-            } else {
-                System.out.println("card already used");
+                System.out.println("Created");
             }
         }
     }
