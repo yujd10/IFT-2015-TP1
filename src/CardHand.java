@@ -17,7 +17,6 @@ public class CardHand {
     }
 
     //public boolean ifEmpty() { return this.cardsInHand.isEmpty(); }
-
     //public int getTotalInHand() {return this.cardsInHand.size();}
 
     public  void createDeck(){
@@ -27,11 +26,13 @@ public class CardHand {
             }
         }
     }
+
 //    public void removeCard(String r,String s){
 //        Position<Card> p = this.
 //            }
 //        }
 //    }
+    
     public Card addCard(String r, String s) {
         Card cardAdded=new Card(null,null);
         for (int i = 0; i < deck.size(); i++) {
