@@ -5,6 +5,10 @@ public class CardHand {
     private int totalInHand;
     public ArrayList<Card> deck ;//= new ArrayList<>();
     PositionalList<Card> cardsInHand; //=new LinkedPositionalList<>();
+    Position<Card> fingerOne;
+    Position<Card> fingerTwo;
+    Position<Card> fingerThree;
+    Position<Card> fingerFour;
     Position<Card> fingerHeart;
     Position<Card> fingerClub;
     Position<Card> fingerSpade;
@@ -13,14 +17,14 @@ public class CardHand {
     public CardHand() {
         cardsInHand = new LinkedPositionalList<>();
         deck = new ArrayList<>();
-        cardsInHand.addFirst(new Card(null, null));
-        fingerHeart = cardsInHand.first();
+        cardsInHand.addFirst(new Card("1", null));
+        fingerOne = cardsInHand.last();
+        cardsInHand.addLast(new Card(  ull));
+        fingerTwo = cardsInHand.last();
         cardsInHand.addLast(new Card(null, null));
-        fingerClub = cardsInHand.last();
+        fingerThree = cardsInHand.last();
         cardsInHand.addLast(new Card(null, null));
-        fingerSpade = cardsInHand.last();
-        cardsInHand.addLast(new Card(null, null));
-        fingerDiamond = cardsInHand.last();
+        fingerFour = cardsInHand.last();
     }
 
     public boolean ifEmpty() { return this.cardsInHand.isEmpty(); }
@@ -39,30 +43,78 @@ public class CardHand {
         for (int i = 0; i < deck.size(); i++) {
             if (deck.get(i).getRank() == r && deck.get(i).getSuit() == s) {
                 if(deck.get(i).getSuit() == "Heart") {
-                    this.cardsInHand.addAfter(fingerHeart,deck.get(i));
-                    deck.remove(deck.get(i));
-
-                    //System.out.println("Created");
+                    defineFinger(fingerHeart,deck.get(i));
+                    }
                 }else if (deck.get(i).getSuit() == "Club"){
-                    this.cardsInHand.addAfter(fingerClub,deck.get(i));
-                    deck.remove(deck.get(i));
+                    defineFinger(fingerClub,deck.get(i));
 
-                    //System.out.println("Created");
                 }else if (deck.get(i).getSuit() == "Spade"){
-                    this.cardsInHand.addAfter(fingerSpade,deck.get(i));
-                    deck.remove(deck.get(i));
-
-                    //System.out.println("Created");
+                    defineFinger(fingerSpade,deck.get(i));
                 }else{
-                    this.cardsInHand.addAfter(fingerDiamond,deck.get(i));
-                    deck.remove(deck.get(i));
+                    defineFinger(fingerDiamond,deck.get(i));
 
-                    //System.out.println("Created");
                 }
             }
         }
+    public void defineFinger(Position<Card> finger,Card card){
+        if (isFingerEmpty(fingerOne)){
+            cardsInHand.before(fingerOne).getElement().setSuit(card.getSuit());
+            cardsInHand.before(fingerOne).getElement().setRank(card.getRank());
+            this.fingerOne = finger;
+            deck.remove(card);}
+        else if (isFingerEmpty(fingerTwo)) {
+            cardsInHand.before(fingerTwo).getElement().setSuit(card.getSuit());
+            cardsInHand.before(fingerTwo).getElement().setRank(card.getRank());
+            this.fingerTwo = finger;
+            deck.remove(card);}
+        else if (isFingerEmpty(fingerThree)) {
+            cardsInHand.before(fingerThree).getElement().setSuit(card.getSuit());
+            cardsInHand.before(fingerThree).getElement().setRank(card.getRank());
+            this.fingerThree = finger;
+            deck.remove(card);}
+        else if (isFingerEmpty(fingerFour)) {
+            cardsInHand.before(fingerFour).getElement().setSuit(card.getSuit());
+            cardsInHand.before(fingerFour).getElement().setRank(card.getRank());
+            this.fingerFour = finger;
+            deck.remove(card);}
+        else {
+            this.cardsInHand.addBefore(finger,card);
+            deck.remove(card);}
     }
 
+
+    public boolean isFingerEmpty(Position<Card> finger){
+        boolean value;
+        if (cardsInHand.before(finger).getElement().getRank() == null){
+            value = true;}
+        else{
+            value = false;
+        }
+
+        return value;
+    }
+    //Iterates to the next finger
+    public Position<Card> getNextFinger(Position<Card> finger){
+        if (fingerOne.equals(finger)){return fingerOne;}
+        else if (fingerTwo.equals(finger)){return fingerTwo;}
+        else if (fingerThree.equals(finger)){return fingerThree;}
+        else {return fingerFour;}
+    }
+    //find the finger for a specific suit
+//    public Position<Card> suitLocation(String s){
+//        if (s == Card.getSuit()[0]){
+//            return fingerOne;
+//        }
+//        else if (s == Card.getSuit()[1]){
+//            return fingerTwo;
+//        }
+//        else if (s == Card.getSuit()[2]){
+//            return fingerThree;
+//        }
+//        else {
+//            return fingerFour;
+//        }
+//    }
 //    Card Result;
 //    public Card randomCard(Position<Card> finger,String s){
 //
