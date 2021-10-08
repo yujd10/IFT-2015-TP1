@@ -1,25 +1,38 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+/*
+ * Names: Jiadi Yu                Badge: 20189854
+ *        Vanessa Thibault-Soucy         20126808
+ * Date: October 7th 2021
+ * CardHand class arranges a group of cards in a person's hand. The simulator represent the sequence of cards
+ * with the use of a single positional list ADT. This implementation makes sure all cards of the same suit
+ * are kept together in the person's hand.
+ *
+ * To create this class, we have used the classes LinkedPositionalList.java, PositionalList.java and Position.java
+ * which were available on the course's OneDrive. We are not the owner of these classes.
+*/
 
 public class CardHand {
-    private int totalInHand;
-    public ArrayList<Card> deck ;
+    public ArrayList<Card> deck ;   // A deck of 52 cards
     PositionalList<Card> cardsInHand;
-    Position<Card> fingerHeart;
+    Position<Card> fingerHeart; // Variables for our fingers
     Position<Card> fingerClub;
     Position<Card> fingerSpade;
     Position<Card> fingerDiamond;
 
+    /*
+     * CardHand() initiates the LinkedPositionalList that will hold all the cards a player is holding.
+     * It also initiates deck as an ArrayList we will use to make sure a card is not produced twice.
+    */
     public CardHand() {
         cardsInHand = new LinkedPositionalList<>();
         deck = new ArrayList<>();
-        //cardsInHand.addFirst(new Card(null,null));
     }
 
-    //public boolean ifEmpty() { return this.cardsInHand.isEmpty(); }
-    //public int getTotalInHand() {return this.cardsInHand.size();}
-
+    /*
+     * createDeck() produces the desk of 52 cards that will be used as our guide.
+    */
     public  void createDeck(){
         for (int i = 0; i <Card.Suit.length ; i++){
             for (int j = 0; j < Card.Rank.length ; j++){
@@ -28,6 +41,15 @@ public class CardHand {
         }
     }
 
+    /*
+     * addCard() takes 2 String type arguments which represents the rank and the suit of a card respectively.
+     * The function goes through the deck and finds the matching card. If the card is not there the call to the function
+     * has no action on the cards in the players hand. If the card is found in the deck, we check if the finger
+     * that will be holding the card's suit had been placed in the list. If so, the card is placed to the position
+     * before its holding finger and this card is then removed from the deck. If the holding finger has not been placed
+     * yet, the finger in added to the cards in hand as the last element of the list, and the card is added
+     *  right before it.
+    */
     public Card addCard(String r, String s) {
         Card cardAdded=new Card(null,null);
         for (int i = 0; i < deck.size(); i++) {
@@ -86,8 +108,11 @@ public class CardHand {
         }
         return cardAdded;
     }
-
-
+/*
+ * Play() takes a String s which corresponds to the suit of a card. It then analyses the case that corresponds to
+ * this suit and sends it to the playRandomCard() methode with the finder the suit should be attached to, and the suit.
+ * The method returns the card playRandomCard() will have return.
+*/
 
     public Card Play(String s){
            Card cardPlayed=null;
@@ -111,6 +136,10 @@ public class CardHand {
             }
            return cardPlayed;
     }
+    /*
+     * ifFingerEmpty() takes a the position of a finger as its argument and returns true if no cards of the
+     * corresponding suit can be found.
+    */
     public boolean ifFingerEmpty(Position<Card> finger){
         boolean value=false;
         if(cardsInHand.before(finger)==null||finger == null||cardsInHand.before(finger).getElement().getRank()==null){
@@ -119,6 +148,10 @@ public class CardHand {
         return value;
     }
 
+    /*
+     * findPosition takes a card as its argument and returns the position of the card that we are looking for.
+     * The method is also used when we are removing a card to insure we are not trying to remove a finger position.
+     */
     public Position<Card> findPosition (Card card){
         Position<Card> walk = cardsInHand.last();
         while (walk != null && cardsInHand.before(walk).getElement() != card ){
@@ -126,7 +159,9 @@ public class CardHand {
         }
         return cardsInHand.before(walk);
     }
-
+    /*
+     * iterator() return an iterator for all cards currently placed in the player's hand.
+     */
     public Iterator<Card> iterator(){
         Iterator<Card> it = cardsInHand.iterator();
         PositionalList<Card> nonEmpty = new LinkedPositionalList<>();
@@ -138,7 +173,10 @@ public class CardHand {
         it = nonEmpty.iterator();
         return it;
     }
-
+    /*
+     * suitIterator() takes a String in argument which represents the targeted suit and return an iterator f
+     * or all cards of this suit currently in the player's hand.
+     */
     public Iterator<Card> suitIterator(String suit){
         Iterator<Card> itSuit;
         PositionalList<Card> cardOfSuit = new LinkedPositionalList<>();
@@ -150,12 +188,22 @@ public class CardHand {
         itSuit=cardOfSuit.iterator();
         return itSuit;
     }
+    /*
+     * removeCard takes a card as its argument and removes it form the cards in the hand.
+     */
     public void removeCard(Card card){
         if(card.getRank()!=null && card.getSuit()!=null) {
             Position<Card> p = this.findPosition(card);
             cardsInHand.remove(p);
         }
     }
+    /*
+     * playRandomCard takes the position of a specific finger and a suit as its arguments. It validates first if the
+     * hand is not empty and then validates if the finger that we are looking for is not empty as well. If the finger
+     * is empty, we iterate through all the cards in hand and select a random one. If the finger is not empty,
+     * we iterate through the cards that are available for this suit. The method returns the card that was
+     * randomly selected. If the deck is empty, a message is print.
+     */
     public Card playRandomCard(Position<Card> finger,String suit){
         Card card=null;
         if(this.cardsInHand.size()!=4){
@@ -184,13 +232,5 @@ public class CardHand {
         return card;
     }
 }
-//    public void subAddCard(Position<Card> finger,Card card){
-//        if (finger == null) {
-//            cardsInHand.addLast(card);
-//            finger = cardsInHand.last();
-//
-//        } else {
-//            cardsInHand.addBefore(finger, card);
-//        }
-//    }
+
 
