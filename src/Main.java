@@ -6,38 +6,82 @@ public class Main {
     public static void main(String[] args) {
         CardHand cards= new CardHand();
         cards.createDeck();
- //       System.out.println(cards.fingerHeart == null);
         cards.addCard("2","Heart");
-        cards.addCard("J","Spade");
         cards.addCard("3","Heart");
-        cards.addCard("A","Diamond");
         cards.addCard("4","Heart");
-        cards.addCard("2","Club");
         cards.addCard("5","Heart");
-        cards.addCard("A","Club");
-        cards.addCard("2","Diamond");
         cards.addCard("8","Heart");
+        Card c2 = cards.addCard("J","Spade");
 
-//        Position<Card> p1 = cards.findPosition(c1);
-//        System.out.println(p1);
-//        //System.out.println(cards.cardsInHand.after(p1).getElement().getRank());
+        cards.addCard("K","Spade");
+        cards.addCard("5","Diamond");
+        cards.addCard("6","Diamond");
+        cards.addCard("7","Diamond");
+        cards.addCard("3","Club");
+        cards.addCard("4","Club");
+        cards.addCard("5","Club");
+        cards.addCard("Q","Spade");
+
+
+//        System.out.println(cards.cardsInHand.before(cards.fingerHeart).getElement().getRank()+" of "+cards.cardsInHand.before(cards.fingerHeart).getElement().getSuit());
+//        System.out.println(cards.cardsInHand.before(cards.fingerSpade).getElement().getRank()+" of "+cards.cardsInHand.before(cards.fingerSpade).getElement().getSuit());
+//        System.out.println(cards.cardsInHand.before(cards.fingerDiamond).getElement().getRank());
+//        System.out.println(cards.cardsInHand.before(cards.fingerClub).getElement().getRank());
+        //System.out.println(cards.ifFingerEmpty(cards.fingerSpade));
+
+        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        Position<Card> p2= cards.findPosition(c2);
+//        System.out.println(cards.cardsInHand.before(p2).getElement().getRank());
         Iterator<Card> it = cards.suitIterator("Heart");
-        while(it.hasNext()){
+//        System.out.println(it.hasNext());
+//        int i= 0;
+//        int item = new Random().nextInt(cards.cardsInHand.size()-4);
+        while (it.hasNext()){
             Card card = it.next();
-            System.out.println(card.getRank()+" of "+card.getSuit());
+                System.out.println(card.getRank() + "  of " + card.getSuit());
+
         }
-//        System.out.println(c1.getRank());
-//        for(Card card:cards.cardsInHand){
-//            if (card.getRank() !=  " "){
-//                System.out.println(card.getRank()+" of " + card.getSuit());}
+        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        for(Card card: cards.cardsInHand){if(card.getSuit()!=null){System.out.println(card.getRank()+" of " +card.getSuit());}}
+//        cards.removeCard(c2);
+//        System.out.println(cards.fingerSpade.getElement().getRank());
+//        System.out.println("==========================");
+
+//        System.out.println(cards.cardsInHand.before(cards.fingerSpade).getElement().getRank());
+//
+//        cards.removeCard(cards.cardsInHand.before(cards.fingerSpade).getElement());
+//
+//        for(Card card: cards.cardsInHand){System.out.println(card.getRank()+" of " +card.getSuit());}
+//
+//        System.out.println(cards.cardsInHand.before(cards.fingerSpade).getElement().getRank());
+//        cards.removeCard(cards.cardsInHand.before(cards.fingerSpade).getElement());
+//
+//        for(Card card: cards.cardsInHand){System.out.println(card.getRank()+" of " +card.getSuit());}
+//
+//        System.out.println(cards.cardsInHand.before(cards.fingerSpade).getElement().getRank());
+//        cards.removeCard(cards.cardsInHand.before(cards.fingerSpade).getElement());
+//        System.out.println(cards.cardsInHand.before(cards.fingerSpade).getElement().getRank());
+
+////        cards.Play("Spade");
+//        cards.addCard("3","Diamond");
+//        for(Card card: cards.cardsInHand){
+//            System.out.println(card.getRank()+" of "+card.getSuit());
 //        }
+//        System.out.println("===========================");
+//        System.out.println();
+//        cards.Play("Spade");
 //
-//        cards.iterator();
+//        for(Card card: cards.cardsInHand){
+//            System.out.println(card.getRank()+" of "+card.getSuit());
+//        }
 
-
-//
-//        Card cardPlayed = cards.Play("Heart");
-//        System.out.println(cardPlayed.getRank()+" of "+cardPlayed.getSuit());
-//    }
-}
+    }
 }
