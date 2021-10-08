@@ -1,28 +1,53 @@
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
+
 
 public class Main {
     public static void main(String[] args) {
         CardHand cards= new CardHand();
         cards.createDeck();
-        Card c1 =cards.addCard("2","Heart");
-        cards.addCard("5","Club");
-        cards.addCard("Q","Spade");
-        cards.addCard("7","Diamond");
+        Card c1 = cards.addCard("2","Heart");
+        Card c2 = cards.addCard("5","Club");
+        Card c3 = cards.addCard("Q","Spade");
+        Card c4 = cards.addCard("7","Diamond");
 
-        System.out.println(cards.Play("Diamond").getRank());
-        System.out.println(cards.Play("Spade").getRank());
-        System.out.println(cards.Play("Club").getRank());
+//        Position<Card> walk = cards.cardsInHand.last();
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+//        walk=cards.cardsInHand.before(walk);
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+//        walk=cards.cardsInHand.before(walk);
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+//        walk=cards.cardsInHand.before(walk);
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+//        walk=cards.cardsInHand.before(walk);
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+//        walk=cards.cardsInHand.before(walk);
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+//        walk=cards.cardsInHand.before(walk);
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+//        walk=cards.cardsInHand.before(walk);
+//        System.out.println(cards.cardsInHand.before(walk).getElement().getRank());
+
+        Position<Card> p1 = cards.findPosition(c1);
+        Position<Card> p2 = cards.findPosition(c2);
+        Position<Card> p3 = cards.findPosition(c3);
+        Position<Card> p4 = cards.findPosition(c4);
+
+       // System.out.println(cards.cardsInHand.before(p1).getElement().getRank());
+
+//        System.out.println(cards.cardsInHand.before(cards.fingerHeart).getElement());
+
+//        System.out.println(cards.Play("Diamond").getRank());
+//        System.out.println(cards.Play("Spade").getRank());
+//        System.out.println(cards.Play("Club").getRank());
         System.out.println(cards.Play("Heart").getRank()); //Error only for the first element!!!!
 
 
-        Iterator<Card> it = cards.iterator();
-
-        while (it.hasNext()){
-            Card card = it.next();
-                System.out.println(card.getRank() + "  of " + card.getSuit());
-        }
+//        Iterator<Card> it = cards.iterator();
+//
+//        while (it.hasNext()){
+//            Card card = it.next();
+//                System.out.println(card.getRank() + "  of " + card.getSuit());
+//        }
 //        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
 //        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
 //        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());

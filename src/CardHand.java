@@ -120,11 +120,11 @@ public class CardHand {
     }
 
     public Position<Card> findPosition (Card card){
-        Position<Card> walk = cardsInHand.first();
-        while (walk != null && cardsInHand.after(walk).getElement() != card ){
-            walk = this.cardsInHand.after(walk);
+        Position<Card> walk = cardsInHand.last();
+        while (walk != null && cardsInHand.before(walk).getElement() != card ){
+            walk = this.cardsInHand.before(walk);
         }
-        return cardsInHand.after(walk);
+        return cardsInHand.before(walk);
     }
 
     public Iterator<Card> iterator(){
