@@ -113,7 +113,7 @@ public class CardHand {
     }
     public boolean ifFingerEmpty(Position<Card> finger){
         boolean value=false;
-        if(finger == null||cardsInHand.before(finger).getElement().getRank()==null  ){
+        if(cardsInHand.before(finger)==null||finger == null||cardsInHand.before(finger).getElement().getRank()==null){
             value = true;
         }
         return value;
@@ -158,6 +158,7 @@ public class CardHand {
     }
     public Card playRandomCard(Position<Card> finger,String suit){
         Card card=null;
+        if(this.cardsInHand.size()!=4){
         if(ifFingerEmpty(finger)){
             Iterator<Card> it1 = this.iterator();
             int i = 0;
@@ -176,6 +177,9 @@ public class CardHand {
                 card = suitIt.next();
                 removeCard(card);
             }
+        }
+        }else{
+        System.out.println("no more cards in hand");
         }
         return card;
     }

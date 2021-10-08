@@ -40,6 +40,12 @@ public class Main {
 //        System.out.println(cards.Play("Spade").getRank());
 //        System.out.println(cards.Play("Club").getRank());
         System.out.println(cards.Play("Heart").getRank()); //Error only for the first element!!!!
+        System.out.println(cards.Play("Heart").getRank());
+        System.out.println(cards.Play("Heart").getRank());
+        System.out.println(cards.Play("Heart").getRank());
+        System.out.println(cards.Play("Heart").getRank());
+        System.out.println(cards.cardsInHand.size());
+//        System.out.println(cards.Play("Heart").getRank());
 
 
 //        Iterator<Card> it = cards.iterator();
