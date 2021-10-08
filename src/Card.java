@@ -2,17 +2,13 @@ public class Card implements Comparable<Card>  {
     private String rank;
     private String suit;
 
-    public Card(String rank, String suit) {
-        //if ((ifInList(rank, Rank))&&ifInList(suit, Suit)){
-            this.rank = rank;this.suit=suit;
-     }
+
+    public Card(String rank, String suit) {this.rank = rank;this.suit=suit;}
 
     public final static String[] Rank = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
     public final static String[] Suit = {"Heart", "Club", "Spade", "Diamond"}; //Spade > Heart > Diamond > Club
 
-    public String getRank() {
-        return rank;
-    }
+    public String getRank() {return rank;}
 
     public String getSuit() {
         return suit;
@@ -23,13 +19,7 @@ public class Card implements Comparable<Card>  {
 
     @Override
     public int compareTo(Card o) {
-        if(this.rank.compareTo(o.getRank())>0){
-            return 1;
-        }else if(this.rank.compareTo(o.getRank())==0){
-            return 0;
-        }else {
-            return -1;
-        }
+        return -1;
     }
 }
 //    public void setSuitSize(String s){
