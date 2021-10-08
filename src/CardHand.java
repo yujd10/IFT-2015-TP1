@@ -89,27 +89,28 @@ public class CardHand {
 
 
 
-//    public Card Play(String s){
-//           Card cardPlayed=null;
-//           Iterator<Card> it = this.iterator();
-//           Iterator<Card> itSuit = this.suitIterator(s);
-//
-//            switch (s){
-//                case "Heart":
-//                    playRandomCard(fingerHeart,cardPlayed,"Heart");
-//                    break;
-//                case "Club":
-//                    playRandomCard(fingerClub,cardPlayed,"Club");
-//                    break;
-//                case "Spade":
-//                    playRandomCard(fingerSpade,cardPlayed,"Spade");
-//                    break;
-//                case "Diamond":
-//                    playRandomCard(fingerDiamond,cardPlayed,"Diamond");
-//                    break;
-//            }
-//           return cardPlayed;
-//    }
+    public Card Play(String s){
+           Card cardPlayed=null;
+           Iterator<Card> it = this.iterator();
+           Iterator<Card> itSuit = this.suitIterator(s);
+
+            switch (s){
+                case "Heart":
+                    cardPlayed = playRandomCard(fingerHeart,"Heart");
+
+                    break;
+                case "Club":
+                    cardPlayed = playRandomCard(fingerClub,"Club");
+                    break;
+                case "Spade":
+                    cardPlayed = playRandomCard(fingerSpade,"Spade");
+                    break;
+                case "Diamond":
+                    cardPlayed = playRandomCard(fingerDiamond,"Diamond");
+                    break;
+            }
+           return cardPlayed;
+    }
     public boolean ifFingerEmpty(Position<Card> finger){
         boolean value=false;
         if(finger == null||cardsInHand.before(finger).getElement().getRank()==null  ){

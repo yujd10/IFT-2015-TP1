@@ -29,9 +29,13 @@ public class Main {
 //        System.out.println(cards.cardsInHand.before(cards.fingerClub).getElement().getRank());
         //System.out.println(cards.ifFingerEmpty(cards.fingerSpade));
 
-        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
-        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
-        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+        System.out.println(cards.Play("Spade").getRank());
+        System.out.println(cards.Play("Spade").getRank());
+        System.out.println(cards.Play("Spade").getRank());
+        System.out.println(cards.ifFingerEmpty(cards.fingerSpade));
+        Card c4 = cards.Play("Spade");
+        System.out.println(c4.getRank() +" of "+ c4.getSuit());
+ //       cards.findPosition(c1);
 //        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
 //        Position<Card> p2= cards.findPosition(c2);
 //        System.out.println(cards.cardsInHand.before(p2).getElement().getRank());
