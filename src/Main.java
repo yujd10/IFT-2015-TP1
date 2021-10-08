@@ -82,5 +82,6 @@ public class Main {
         cards.Play("Heart");
         cards.Play("Heart");
 
+        System.out.println("================E N D====================");
     }
 }
