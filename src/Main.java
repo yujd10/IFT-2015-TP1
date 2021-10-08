@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         CardHand cards= new CardHand();
         cards.createDeck();
-        cards.addCard("2","Heart");
+        Card c1 =cards.addCard("2","Heart");
         cards.addCard("3","Heart");
         cards.addCard("4","Heart");
         cards.addCard("5","Heart");
@@ -32,7 +32,7 @@ public class Main {
         System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
         System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
         System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
-        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
 //        Position<Card> p2= cards.findPosition(c2);
 //        System.out.println(cards.cardsInHand.before(p2).getElement().getRank());
         Iterator<Card> it = cards.suitIterator("Heart");
@@ -44,7 +44,7 @@ public class Main {
                 System.out.println(card.getRank() + "  of " + card.getSuit());
 
         }
-        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
+//        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
 //        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
 //        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
 //        System.out.println(cards.playRandomCard(cards.fingerHeart, "Heart").getRank());
