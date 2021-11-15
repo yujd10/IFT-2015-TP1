@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         CardHand cards= new CardHand();
         cards.createDeck();
-
+        cards.addCard("J","Diamond");
         cards.addCard("2","Heart");
         cards.addCard("3","Heart");
         cards.addCard("4","Spade");
@@ -22,7 +22,7 @@ public class Main {
         cards.addCard("9","Spade");
         cards.addCard("10","Heart");
         cards.addCard("A","Heart");
-        cards.addCard("J","Diamond");
+
         cards.addCard("Q","Heart");
         cards.addCard("K","Diamond");
 
@@ -81,6 +81,7 @@ public class Main {
         cards.Play("Heart");
         cards.Play("Heart");
         cards.Play("Heart");
+
 
         System.out.println("================E N D====================");
     }
